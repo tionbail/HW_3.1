@@ -30,16 +30,16 @@ public class PracticeFormTests extends TestBase {
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $$("tbody tr").findBy(text("Ivan Ivanov"));
-        $$("tbody tr").findBy(text("ptichka@mail.ru"));
-        $$("tbody tr").findBy(text("Male"));
-        $$("tbody tr").findBy(text("1234567890"));
-        $$("tbody tr").findBy(text("10 April,2000"));
-        $$("tbody tr").findBy(text("History"));
-        $$("tbody tr").findBy(text("Hobbies")).shouldHave(text("R"));
-        $$("tbody tr").findBy(text("screen.jpg"));
-        $$("tbody tr").findBy(text("Moscow, Red square"));
-        $$("tbody tr").findBy(text("Haryana Karnal"));
+        $(".modal-body").shouldHave(text("Ivan Ivanov"));
+        $(".modal-body").shouldHave(text("ptichka@mail.ru"));
+        $(".modal-body").shouldHave(text("Male"));
+        $(".modal-body").shouldHave(text("1234567890"));
+        $(".modal-body").shouldHave(text("10 April,2000"));
+        $(".modal-body").shouldHave(text("History"));
+        $(".modal-body").shouldHave(text("Hobbies")).shouldHave(text("R"));
+        $(".modal-body").shouldHave(text("screen.jpg"));
+        $(".modal-body").shouldHave(text("Moscow, Red square"));
+        $(".modal-body").shouldHave(text("Haryana Karnal"));
     }
 
     @Test
