@@ -21,7 +21,7 @@ public class PracticeFormTests extends TestBase {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(monthOfBirth);
         $(".react-datepicker__year-select").selectOption(yearOfBirth);
-        $(".react-datepicker__day--010").click();
+        $(".react-datepicker__day--0"+dayOfBirth).click();
         $("#subjectsInput").setValue(subject).pressEnter();
         $("#hobbiesWrapper").find(byText(hobbiesReading)).click();
         $("#uploadPicture").uploadFromClasspath(nameOfFile);
@@ -35,7 +35,7 @@ public class PracticeFormTests extends TestBase {
         $(".modal-body").shouldHave(text(userEmail));
         $(".modal-body").shouldHave(text(genterWrapper));
         $(".modal-body").shouldHave(text(userNumber));
-        $(".modal-body").shouldHave(text(dateOfBirth));
+        $(".modal-body").shouldHave(text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth));
         $(".modal-body").shouldHave(text(subject));
         $(".modal-body").shouldHave(text("Hobbies")).shouldHave(text(hobbiesReading));
         $(".modal-body").shouldHave(text(nameOfFile));

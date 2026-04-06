@@ -10,6 +10,7 @@ public class TestData {
     public static String genterWrapper = "Male";
     public static String yearOfBirth = "2000";
     public static String monthOfBirth = "April";
+    public static String dayOfBirth = "06";
     public static String subject = "History";
     public static String hobbiesReading = "Reading";
     public static String nameOfFile = "screen.jpg";
