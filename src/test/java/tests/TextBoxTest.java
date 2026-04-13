@@ -1,33 +1,34 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.TextBoxPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static tests.TestData.*;
 
 public class TextBoxTest extends TestBase {
 
+    TextBoxPage textBoxPage = new TextBoxPage();
+
     @Test
     void fullForm() {
-        open("/text-box");
-        $("#userName").setValue(userName);
-        $("#userEmail").setValue(userEmail);
-        $("#submit").click();
 
-        $("#output").shouldHave(text(userName));
-        $("#output").shouldHave(text(userEmail));
+
+        textBoxPage.openPage()
+                .typeUserName(userName)
+                .typeUserEmail(userEmail)
+                .submitForm();
+
+        textBoxPage.checkField("name", userName)
+                .checkField("email", userEmail);
     }
 
     @Test
     void negativeEmailForm() {
-        open("/text-box");
-        $("#userName").setValue(userName);
-        $("#userEmail").setValue("hello");
-        $("#submit").click();
+        textBoxPage.openPage();
+        textBoxPage.typeUserName(userName);
+        textBoxPage.typeUserEmail(inCorrectEmail);
+        textBoxPage.submitForm();
 
-        $("#output").shouldNotBe(visible);
+        textBoxPage.invisibleResult();
     }
 }

@@ -6,6 +6,7 @@ public class TestData {
     public static String firstName = "Ivan";
     public static String lastName = "Ivanov";
     public static String userEmail = "ptichka@mail.ru";
+    public static String inCorrectEmail = "hello";
     public static String userNumber = "1234567890";
     public static String genterWrapper = "Male";
     public static String yearOfBirth = "2000";
