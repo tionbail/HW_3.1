@@ -1,95 +1,91 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.cssValue;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
 import static tests.TestData.*;
 
 public class PracticeFormTests extends TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
+
 
     @Test
     void studentRegistrationForm() {
-        open("/automation-practice-form");
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userEmail").setValue(userEmail);
-        $("#genterWrapper").find(byText(genterWrapper)).click();
-        $("#userNumber").setValue(userNumber);
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption(monthOfBirth);
-        $(".react-datepicker__year-select").selectOption(yearOfBirth);
-        $(".react-datepicker__day--0"+dayOfBirth).click();
-        $("#subjectsInput").setValue(subject).pressEnter();
-        $("#hobbiesWrapper").find(byText(hobbiesReading)).click();
-        $("#uploadPicture").uploadFromClasspath(nameOfFile);
-        $("#currentAddress").setValue(currentAddress);
-        $("#react-select-3-input").setValue(country).pressEnter();
-        $("#react-select-4-input").setValue(city).pressEnter();
-        $("#submit").click();
+        registrationPage.openPage()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeUserEmail(userEmail)
+                .typeUserNumber(userNumber)
+                .typeGenderWrapper(genterWrapper)
+                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
+                .selectSubject(subject)
+                .selectHobbies(hobbiesReading)
+                .loadPicture(nameOfFile)
+                .typeCurrentAddress(currentAddress)
+                .setStateAndCity(country, city)
+                .submitForm()
 
-        $("#example-modal-sizes-title-lg").shouldHave(text(messageSubmit));
-        $(".modal-body").shouldHave(text(userName));
-        $(".modal-body").shouldHave(text(userEmail));
-        $(".modal-body").shouldHave(text(genterWrapper));
-        $(".modal-body").shouldHave(text(userNumber));
-        $(".modal-body").shouldHave(text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth));
-        $(".modal-body").shouldHave(text(subject));
-        $(".modal-body").shouldHave(text("Hobbies")).shouldHave(text(hobbiesReading));
-        $(".modal-body").shouldHave(text(nameOfFile));
-        $(".modal-body").shouldHave(text(currentAddress));
-        $(".modal-body").shouldHave(text(country +" "+ city));
+                .checkModalTitleWindowOpen()
+                .checkResult("Student Name", userName)
+                .checkResult("Student Email", userEmail)
+                .checkResult("Gender", genterWrapper)
+                .checkResult("Mobile", userNumber)
+                .checkResult("Date of Birth", dateOfBirth)
+                .checkResult("Subjects", subject)
+                .checkResult("Hobbies", hobbiesReading)
+                .checkResult("Picture", nameOfFile)
+                .checkResult("Address", currentAddress)
+                .checkResult("State and City", country + " " + city);
+
     }
 
     @Test
     void onlyRequiredFields() {
-        open("/automation-practice-form");
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#genterWrapper").find(byText(genterWrapper)).click();
-        $("#userNumber").setValue(userNumber);
-        $("#submit").click();
+        registrationPage.openPage()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeGenderWrapper(genterWrapper)
+                .typeUserNumber(userNumber)
+                .submitForm()
 
-
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(userName));
-        $(".table-responsive").shouldHave(text(genterWrapper));
-        $(".table-responsive").shouldHave(text(userNumber));
+                .checkModalTitleWindowOpen()
+                .checkResult("Student Name", userName)
+                .checkResult("Gender", genterWrapper)
+                .checkResult("Mobile", userNumber);
     }
 
     @Test
     void negativeNameFields() {
-        open("/automation-practice-form");
-        $("#lastName").setValue(lastName);
-        $("#genterWrapper").find(byText(genterWrapper)).click();
-        $("#userNumber").setValue(userNumber);
-        $("#submit").click();
+        registrationPage.openPage()
+                .typeLastName(lastName)
+                .typeGenderWrapper(genterWrapper)
+                .typeUserNumber(userNumber)
+                .submitForm()
 
-        $("#firstName").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+                .checkNotTable();
+
     }
 
     @Test
     void negativeLastNameFields() {
-        open("/automation-practice-form");
-        $("#firstName").setValue(firstName);
-        $("#genterWrapper").find(byText(genterWrapper)).click();
-        $("#userNumber").setValue(userNumber);
-        $("#submit").click();
+        registrationPage.openPage()
+                .typeFirstName(firstName)
+                .typeGenderWrapper(genterWrapper)
+                .typeUserNumber(userNumber)
+                .submitForm()
 
-        $("#lastName").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+                .checkNotTable();
     }
 
     @Test
     void negativeGenderFields() {
-        open("/automation-practice-form");
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
-        $("#userNumber").setValue(userNumber);
-        $("#submit").click();
+        registrationPage.openPage()
+                .typeFirstName(firstName)
+                .typeLastName(lastName)
+                .typeUserNumber(userNumber)
+                .submitForm()
 
-        $("[value=Male]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+                .checkNotTable();
     }
 
 }

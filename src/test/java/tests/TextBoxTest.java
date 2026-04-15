@@ -12,7 +12,6 @@ public class TextBoxTest extends TestBase {
     @Test
     void fullForm() {
 
-
         textBoxPage.openPage()
                 .typeUserName(userName)
                 .typeUserEmail(userEmail)

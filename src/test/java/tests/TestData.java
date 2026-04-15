@@ -11,7 +11,7 @@ public class TestData {
     public static String genterWrapper = "Male";
     public static String yearOfBirth = "2000";
     public static String monthOfBirth = "April";
-    public static String dayOfBirth = "06";
+    public static String dayOfBirth = "10";
     public static String subject = "History";
     public static String hobbiesReading = "Reading";
     public static String nameOfFile = "screen.jpg";
@@ -19,7 +19,6 @@ public class TestData {
     public static String country = "Haryana";
     public static String city = "Karnal";
     public static String dateOfBirth = "10 April,2000";
-    public static String messageSubmit = "Thanks for submitting the form";
 
 
 }
