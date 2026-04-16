@@ -15,20 +15,20 @@ public class RegistrationPage {
 
     CalendarComponent calendar = new CalendarComponent();
 
-    private SelenideElement firstName = $("#firstName");
-    private SelenideElement lastName= $("#lastName");
-    private SelenideElement userEmail= $("#userEmail");
-    private SelenideElement genderContainer= $("#genterWrapper");
-    private SelenideElement userNumber= $("#userNumber");
-    private SelenideElement subjects= $("#subjectsInput");
-    private SelenideElement hobbies= $("#hobbiesWrapper");
-    private SelenideElement uploadPicture= $("#uploadPicture");
-    private SelenideElement currentAddress= $("#currentAddress");
-    private SelenideElement stateSelect = $("#react-select-3-input");
-    private SelenideElement citySelect = $("#react-select-4-input");
-    private SelenideElement submitButton = $("#submit");
-    private SelenideElement titleSuccessfulReg = $("#example-modal-sizes-title-lg");
-    private SelenideElement checkResultComponent = $(".modal-body");
+    private final SelenideElement firstName = $("#firstName");
+    private final SelenideElement lastName= $("#lastName");
+    private final SelenideElement userEmail= $("#userEmail");
+    private final SelenideElement genderContainer= $("#genterWrapper");
+    private final SelenideElement userNumber= $("#userNumber");
+    private final SelenideElement subjects= $("#subjectsInput");
+    private final SelenideElement hobbies= $("#hobbiesWrapper");
+    private final SelenideElement uploadPicture= $("#uploadPicture");
+    private final SelenideElement currentAddress= $("#currentAddress");
+    private final SelenideElement stateSelect = $("#react-select-3-input");
+    private final SelenideElement citySelect = $("#react-select-4-input");
+    private final SelenideElement submitButton = $("#submit");
+    private final SelenideElement titleSuccessfulReg = $("#example-modal-sizes-title-lg");
+    private final SelenideElement checkResultComponent = $(".modal-body");
 
 
     public RegistrationPage openPage() {
@@ -109,23 +109,23 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkModalTitleWindowOpen() {
-        titleSuccessfulReg.shouldHave(text("Thanks for submitting the form"));
-        return this;
-    }
-
-    public RegistrationPage checkResult(String key, String value) {
-        checkResultComponent
-                .$$( "tr")
-                .findBy(text(key))
-                .shouldHave(text(value));
-        return this;
-    }
-
-    public RegistrationPage checkNotTable () {
-        submitForm();
-        $("#modal-content").shouldNotBe(visible);
-        return this;
-    }
+//    public RegistrationPage checkModalTitleWindowOpen() {
+//        titleSuccessfulReg.shouldHave(text("Thanks for submitting the form"));
+//        return this;
+//    }
+//
+//    public RegistrationPage checkResult(String key, String value) {
+//        checkResultComponent
+//                .$$( "tr")
+//                .findBy(text(key))
+//                .shouldHave(text(value));
+//        return this;
+//    }
+//
+//    public RegistrationPage checkNotTable () {
+//        submitForm();
+//        $("#modal-content").shouldNotBe(visible);
+//        return this;
+//    }
 
 }

@@ -2,11 +2,13 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import pages.components.FinalTableComponent;
 
 import static tests.TestData.*;
 
 public class PracticeFormTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
+    FinalTableComponent finalTableComponent = new FinalTableComponent();
 
 
     @Test
@@ -23,9 +25,9 @@ public class PracticeFormTests extends TestBase {
                 .loadPicture(nameOfFile)
                 .typeCurrentAddress(currentAddress)
                 .setStateAndCity(country, city)
-                .submitForm()
+                .submitForm();
 
-                .checkModalTitleWindowOpen()
+                finalTableComponent.checkModalTitleWindowOpen()
                 .checkResult("Student Name", userName)
                 .checkResult("Student Email", userEmail)
                 .checkResult("Gender", genterWrapper)
@@ -46,9 +48,9 @@ public class PracticeFormTests extends TestBase {
                 .typeLastName(lastName)
                 .typeGenderWrapper(genterWrapper)
                 .typeUserNumber(userNumber)
-                .submitForm()
+                .submitForm();
 
-                .checkModalTitleWindowOpen()
+                finalTableComponent.checkModalTitleWindowOpen()
                 .checkResult("Student Name", userName)
                 .checkResult("Gender", genterWrapper)
                 .checkResult("Mobile", userNumber);
@@ -60,9 +62,9 @@ public class PracticeFormTests extends TestBase {
                 .typeLastName(lastName)
                 .typeGenderWrapper(genterWrapper)
                 .typeUserNumber(userNumber)
-                .submitForm()
+                .submitForm();
 
-                .checkNotTable();
+                finalTableComponent.checkNotTable();
 
     }
 
@@ -72,9 +74,9 @@ public class PracticeFormTests extends TestBase {
                 .typeFirstName(firstName)
                 .typeGenderWrapper(genterWrapper)
                 .typeUserNumber(userNumber)
-                .submitForm()
+                .submitForm();
 
-                .checkNotTable();
+                finalTableComponent.checkNotTable();
     }
 
     @Test
@@ -83,9 +85,9 @@ public class PracticeFormTests extends TestBase {
                 .typeFirstName(firstName)
                 .typeLastName(lastName)
                 .typeUserNumber(userNumber)
-                .submitForm()
+                .submitForm();
 
-                .checkNotTable();
+                finalTableComponent.checkNotTable();
     }
 
 }
