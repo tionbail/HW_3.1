@@ -1,15 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.selector.ByText;
 import pages.components.CalendarComponent;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static tests.TestData.*;
-import static tests.TestData.currentAddress;
+
+
 
 public class RegistrationPage {
 
@@ -27,8 +25,7 @@ public class RegistrationPage {
     private final SelenideElement stateSelect = $("#react-select-3-input");
     private final SelenideElement citySelect = $("#react-select-4-input");
     private final SelenideElement submitButton = $("#submit");
-    private final SelenideElement titleSuccessfulReg = $("#example-modal-sizes-title-lg");
-    private final SelenideElement checkResultComponent = $(".modal-body");
+
 
 
     public RegistrationPage openPage() {

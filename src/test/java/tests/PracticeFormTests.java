@@ -1,67 +1,61 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
-import pages.components.FinalTableComponent;
-
-import static tests.TestData.*;
 
 public class PracticeFormTests extends TestBase {
-    RegistrationPage registrationPage = new RegistrationPage();
-    FinalTableComponent finalTableComponent = new FinalTableComponent();
 
 
     @Test
     void studentRegistrationForm() {
         registrationPage.openPage()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeUserEmail(userEmail)
-                .typeUserNumber(userNumber)
-                .typeGenderWrapper(genterWrapper)
-                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
-                .selectSubject(subject)
-                .selectHobbies(hobbiesReading)
-                .loadPicture(nameOfFile)
-                .typeCurrentAddress(currentAddress)
-                .setStateAndCity(country, city)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeUserEmail(testData.userEmail)
+                .typeUserNumber(testData.userNumber)
+                .typeGenderWrapper(testData.genterWrapper)
+                .setDateOfBirth(testData.dayOfBirth, testData.monthOfBirth, testData.yearOfBirth)
+                .selectSubject(testData.subject)
+                .selectHobbies(testData.hobbiesReading)
+                .loadPicture(testData.nameOfFile)
+                .typeCurrentAddress(testData.currentAddress)
+                .setStateAndCity(testData.state, testData.city)
                 .submitForm();
 
                 finalTableComponent.checkModalTitleWindowOpen()
-                .checkResult("Student Name", userName)
-                .checkResult("Student Email", userEmail)
-                .checkResult("Gender", genterWrapper)
-                .checkResult("Mobile", userNumber)
-                .checkResult("Date of Birth", dateOfBirth)
-                .checkResult("Subjects", subject)
-                .checkResult("Hobbies", hobbiesReading)
-                .checkResult("Picture", nameOfFile)
-                .checkResult("Address", currentAddress)
-                .checkResult("State and City", country + " " + city);
+                .checkResult("Student Name", testData.userName)
+                .checkResult("Student Email", testData.userEmail)
+                .checkResult("Gender", testData.genterWrapper)
+                .checkResult("Mobile", testData.userNumber)
+                .checkResult("Date of Birth", testData.dateOfBirth)
+                .checkResult("Subjects", testData.subject)
+                .checkResult("Hobbies", testData.hobbiesReading)
+                .checkResult("Picture", testData.nameOfFile)
+                .checkResult("Address", testData.currentAddress)
+                .checkResult("State and City", testData.state + " " + testData.city);
 
     }
 
     @Test
     void onlyRequiredFields() {
         registrationPage.openPage()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeGenderWrapper(genterWrapper)
-                .typeUserNumber(userNumber)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeGenderWrapper(testData.genterWrapper)
+                .typeUserNumber(testData.userNumber)
                 .submitForm();
 
                 finalTableComponent.checkModalTitleWindowOpen()
-                .checkResult("Student Name", userName)
-                .checkResult("Gender", genterWrapper)
-                .checkResult("Mobile", userNumber);
+                .checkResult("Student Name", testData.userName)
+                .checkResult("Gender", testData.genterWrapper)
+                .checkResult("Mobile", testData.userNumber);
     }
 
     @Test
     void negativeNameFields() {
         registrationPage.openPage()
-                .typeLastName(lastName)
-                .typeGenderWrapper(genterWrapper)
-                .typeUserNumber(userNumber)
+                .typeLastName(testData.lastName)
+                .typeGenderWrapper(testData.genterWrapper)
+                .typeUserNumber(testData.userNumber)
                 .submitForm();
 
                 finalTableComponent.checkNotTable();
@@ -71,9 +65,9 @@ public class PracticeFormTests extends TestBase {
     @Test
     void negativeLastNameFields() {
         registrationPage.openPage()
-                .typeFirstName(firstName)
-                .typeGenderWrapper(genterWrapper)
-                .typeUserNumber(userNumber)
+                .typeFirstName(testData.firstName)
+                .typeGenderWrapper(testData.genterWrapper)
+                .typeUserNumber(testData.userNumber)
                 .submitForm();
 
                 finalTableComponent.checkNotTable();
@@ -82,9 +76,9 @@ public class PracticeFormTests extends TestBase {
     @Test
     void negativeGenderFields() {
         registrationPage.openPage()
-                .typeFirstName(firstName)
-                .typeLastName(lastName)
-                .typeUserNumber(userNumber)
+                .typeFirstName(testData.firstName)
+                .typeLastName(testData.lastName)
+                .typeUserNumber(testData.userNumber)
                 .submitForm();
 
                 finalTableComponent.checkNotTable();
