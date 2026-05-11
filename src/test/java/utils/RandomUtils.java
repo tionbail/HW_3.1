@@ -49,18 +49,13 @@ public class RandomUtils {
     }
 
     public static String getRandomCity(String states) {
-        switch (states) {
-            case "NCR":
-                return getRandomItemStringArray(new String[]{"Delhi", "Gurgaon", "Noida"});
-            case "Uttar Pradesh":
-                return getRandomItemStringArray(new String[]{"Agra", "Lucknow", "Merrut"});
-            case "Haryana":
-                return getRandomItemStringArray(new String[]{"Karnal", "Panipat"});
-            case "Rajasthan":
-                return getRandomItemStringArray(new String[]{"Jaipur", "Jaiselmer"});
-            default:
-                return states;
-        }
+         return switch (states) {
+             case "NCR" -> getRandomItemStringArray(new String[]{"Delhi", "Gurgaon", "Noida"});
+             case "Uttar Pradesh" -> getRandomItemStringArray(new String[]{"Agra", "Lucknow", "Merrut"});
+             case "Haryana" -> getRandomItemStringArray(new String[]{"Karnal", "Panipat"});
+             case "Rajasthan" -> getRandomItemStringArray(new String[]{"Jaipur", "Jaiselmer"});
+             default -> states;
+         };
     }
 
     public static String getRandomItemStringArray(String[] stringArray) {

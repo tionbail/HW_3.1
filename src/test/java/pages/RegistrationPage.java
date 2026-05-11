@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import utils.CloseAd;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -27,9 +28,9 @@ public class RegistrationPage {
     private final SelenideElement submitButton = $("#submit");
 
 
-
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+        CloseAd.closeAd();
         return this;
     }
 
