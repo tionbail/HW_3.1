@@ -4,8 +4,6 @@ import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
-import static tests.TestData.*;
-
 public class TextBoxTest extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
