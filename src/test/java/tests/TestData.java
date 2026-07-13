@@ -1,24 +1,32 @@
 package tests;
 
+import com.github.javafaker.Faker;
+import static utils.RandomUtils.*;
+
 public class TestData {
 
-    public static String userName = "Ivan Ivanov";
-    public static String firstName = "Ivan";
-    public static String lastName = "Ivanov";
-    public static String userEmail = "ptichka@mail.ru";
-    public static String inCorrectEmail = "hello";
-    public static String userNumber = "1234567890";
-    public static String genterWrapper = "Male";
-    public static String yearOfBirth = "2000";
-    public static String monthOfBirth = "April";
-    public static String dayOfBirth = "10";
-    public static String subject = "History";
-    public static String hobbiesReading = "Reading";
-    public static String nameOfFile = "screen.jpg";
-    public static String currentAddress = "Moscow, Red square";
-    public static String country = "Haryana";
-    public static String city = "Karnal";
-    public static String dateOfBirth = "10 April,2000";
+    Faker faker = new Faker();
+
+    public String userEmail = faker.internet().emailAddress();
+    public String currentAddress = faker.address().fullAddress();
+
+    public String firstName = faker.name().firstName();
+    public String lastName = faker.name().lastName();
+    public String userName = "%s %s".formatted(firstName,lastName);
+
+    public String inCorrectEmail = faker.name().lastName();
+    public String userNumber = getRandomPhone();
+    public String genterWrapper =getRandomGender();
+    public String yearOfBirth = String.valueOf(faker.number().numberBetween(1900,2026));
+    public String monthOfBirth = getRandomMonth();
+    public String dayOfBirth = String.valueOf(faker.number().numberBetween(1,28));
+    public String subject = getRandomSubject();
+    public String hobbiesReading = getRandomHobbies();
+    public String nameOfFile = getRandomImage();
+
+    public String state = getRandomState();
+    public String city = getRandomCity(state);
+    public String dateOfBirth = dayOfBirth+" "+monthOfBirth+","+yearOfBirth;
 
 
 }
