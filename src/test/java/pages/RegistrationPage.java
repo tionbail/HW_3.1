@@ -1,13 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import utils.CloseAd;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class RegistrationPage {
@@ -28,80 +27,95 @@ public class RegistrationPage {
     private final SelenideElement submitButton = $("#submit");
 
 
+    @Step("Open registration page /automation-practice-form")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         CloseAd.closeAd();
         return this;
     }
 
+    @Step("Type first name \"{value}\"")
     public RegistrationPage typeFirstName(String value) {
         firstName.setValue(value);
         return this;
     }
 
+    @Step("Type last name \"{value}\"")
     public RegistrationPage typeLastName(String value) {
         lastName.setValue(value);
         return this;
     }
 
+    @Step("Type user email \"{value}\"")
     public RegistrationPage typeUserEmail(String value) {
         userEmail.setValue(value);
         return this;
     }
 
+    @Step("Type user number \"{value}\"")
     public RegistrationPage typeUserNumber(String value) {
         userNumber.setValue(value);
         return this;
     }
 
+    @Step("Set gender \"{value}\"")
     public RegistrationPage typeGenderWrapper (String value) {
         genderContainer.$(byText(value)).click();
         return this;
     }
 
 
+    @Step("Set date of birth \"{day}\" \"{month}\" \"{year}\"")
     public RegistrationPage setDateOfBirth (String day, String month, String year) {
         $("#dateOfBirthInput").click();
         calendar.setDate(day, month,year);
         return this;
     }
 
+    @Step("Set subject \"{value}\"")
     public RegistrationPage selectSubject(String value) {
         subjects.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Set hobby \"{value}\"")
     public RegistrationPage selectHobbies(String value) {
-        hobbies.find(byText(value)).click();
+        hobbies.$(byText(value)).click();
         return this;
     }
 
+    @Step("Upload image \"{value}\"")
     public RegistrationPage loadPicture(String value) {
         uploadPicture.uploadFromClasspath(value);
         return this;
     }
 
+    @Step("Type user current address \"{value}\"")
     public RegistrationPage typeCurrentAddress(String value) {
         currentAddress.setValue(value);
         return this;
     }
 
+    @Step("Set state \"{value}\"")
     public RegistrationPage setState(String value) {
         stateSelect.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Set City \"{value}\"")
     public RegistrationPage setCity(String value) {
         citySelect.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Set state \"{state}\" and city \"{city}\"")
     public RegistrationPage setStateAndCity(String state, String city) {
         setState(state);
         setCity(city);
         return this;
     }
 
+    @Step("Submit form")
     public RegistrationPage submitForm() {
         submitButton.click();
         return this;
