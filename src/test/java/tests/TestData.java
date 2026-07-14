@@ -21,7 +21,7 @@ public class TestData {
     public String monthOfBirth = getRandomMonth();
     public String dayOfBirth = String.valueOf(faker.number().numberBetween(1,28));
     public String subject = getRandomSubject();
-    public String hobbiesReading = getRandomHobbies();
+    public String hobbies = "Sports";
     public String nameOfFile = getRandomImage();
 
     public String state = getRandomState();

@@ -20,7 +20,7 @@ public class PracticeFormTests extends TestBase {
                     .typeGenderWrapper(testData.genterWrapper)
                     .setDateOfBirth(testData.dayOfBirth, testData.monthOfBirth, testData.yearOfBirth)
                     .selectSubject(testData.subject)
-                    .selectHobbies(testData.hobbiesReading)
+                    .selectHobbies(testData.hobbies)
                     .loadPicture(testData.nameOfFile)
                     .typeCurrentAddress(testData.currentAddress)
                     .setStateAndCity(testData.state, testData.city);
@@ -37,7 +37,7 @@ public class PracticeFormTests extends TestBase {
                     .checkResult("Mobile", testData.userNumber)
                     .checkResult("Date of Birth", testData.dateOfBirth)
                     .checkResult("Subjects", testData.subject)
-                    .checkResult("Hobbies", testData.hobbiesReading)
+                    .checkResult("Hobbies", testData.hobbies)
                     .checkResult("Picture", testData.nameOfFile)
                     .checkResult("Address", testData.currentAddress)
                     .checkResult("State and City", testData.state + " " + testData.city);
